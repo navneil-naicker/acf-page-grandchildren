@@ -76,7 +76,7 @@ class acf_page_grandchildren{
 	}
 
 	public function acf_rule_match_grandchild( $match, $rule, $options ){
-		if( !$options['post_id'] || 'page' !== get_post_type( $options['post_id']) ) return false;
+		if( empty($options['post_id']) || 'page' !== get_post_type( $options['post_id']) ) return false;
 		$parent = get_ancestors( $options['post_id'], 'page' );
 		$grandparent = !empty($parent[1])? $parent[1]: null;
 		if( $grandparent ){
